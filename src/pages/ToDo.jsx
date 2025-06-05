@@ -4,6 +4,7 @@ import { Rocket } from "lucide-react"
 import { useFetchStore } from '../stores/useFetchStore'
 import { useNewStore } from '../stores/useNewStore'
 import YupToLogin  from "../validator/YupToLogin"
+import { schema } from '../validator/schema'
 
 export default function ToDo() {
   const post = useFetchStore((state) => state.posts)
@@ -22,7 +23,7 @@ export default function ToDo() {
   const hdlSubmit = async (e) => {
     e.preventDefault()
     try {
-      await schema.validate(login, { abortEarly: false })
+      await schema.validate(task, { abortEarly: false })
       setTask(newTask)
       navi("/todo")
     } catch (error) {
