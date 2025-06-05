@@ -33,21 +33,21 @@ username: password{userId}
 
 ### 2. Todo Page
 
-- [] Inputs (2pts)
+- [x] Inputs (2pts)
 
-- [] Button to Edit (2pts)
+- [x] Button to Edit (2pts)
 
-- [] Button to Submit (2pts)
+- [x] Button to Submit (2pts)
 
-- [] Button to Delete (2pts)
+- [x] Button to Delete (2pts)
 
-- [] CheckBox (2pts)
+- [x] CheckBox (2pts)
 
 ### 3.Naming and Structures
 
-- [] Good Naming for Components (5pts)
+- [x] Good Naming for Components (5pts)
 
-- [] Readable Code (easy to read): Good components seperation(10pts)
+- [x] Readable Code (easy to read): Good components seperation(10pts)
 
 ### Part-3 : Feature and Logic (95pts)
 

@@ -3,19 +3,19 @@ import CompoForToDo from '../components/compoForToDo'
 import { Rocket } from "lucide-react"
 import { useFetchStore } from '../stores/useFetchStore'
 import { useNewStore } from '../stores/useNewStore'
-import YupToLogin  from "../validator/YupToLogin"
-import { schema } from '../validator/schema'
+import YupToLogin from "../validator/YupToLogin"
+import { schemaTodo } from "../validator/schemaTodo"
 
 export default function ToDo() {
   const post = useFetchStore((state) => state.posts)
   const fetch = useFetchStore((state) => state.fetchData)
-  const newTask = useNewStore((state)=> state.fetchDataTask)
+  const newTask = useNewStore((state) => state.fetchDataTask)
   const [task, setTask] = useState({
-    task: "",
+    taskName: "",
     userId: "27"
   })
 
- const [errObj, setErrObj] = useState({})
+  const [errObj, setErrObj] = useState({})
 
   const hdlTask = (e) => {
     setTask({ ...task, [e.target.id]: e.target.value })
@@ -23,8 +23,8 @@ export default function ToDo() {
   const hdlSubmit = async (e) => {
     e.preventDefault()
     try {
-      await schema.validate(task, { abortEarly: false })
-      setTask(newTask)
+       schemaTodo.validateSync(task, { abortEarly: false })
+      newTask(task)
       navi("/todo")
     } catch (error) {
       console.log(error)
@@ -44,7 +44,7 @@ export default function ToDo() {
         </div>
         <input type="text" className="mt-4 mb-3 w-full h-10 text-2xl border-b-1 border-b-amber-50 p-3"
           placeholder="New Tesk" onChange={hdlTask} />
-          <p className='text-red-500 text-center'>{errObj.task}</p>
+        {errObj.taskName && <p className='text-red-500 text-center'>{errObj.taskName}</p>}
         <button className='btn btn-accent' onClick={hdlSubmit} >Submit</button>
 
         <CompoForToDo />
